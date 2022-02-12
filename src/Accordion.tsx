@@ -1,6 +1,6 @@
 import { type } from 'os';
 import React from 'react';
-import { isReturnStatement } from 'typescript';
+import { isReturnStatement, TypePredicateKind } from 'typescript';
 
 type AccordionPropsType = {
   titleValue: string
@@ -8,12 +8,24 @@ type AccordionPropsType = {
 }
 
 export function Accordion(props: AccordionPropsType) {
+  
+      
+      return <div>
+        <AccordionTitle title={props.titleValue} />
+        {!props.collapsed=== false && <AccordionBody />}
+      </div>
+  
+    }
 
-  if (props.collapsed) {
+
+export function Accordion2(props: AccordionPropsType) {
+
+  if (props.collapsed===true) {
     return <div>
       <AccordionTitle title={props.titleValue} />
     </div>
   } else {
+    
     return <div>
       <AccordionTitle title={props.titleValue} />
       <AccordionBody />
@@ -21,6 +33,9 @@ export function Accordion(props: AccordionPropsType) {
 
   }
 }
+
+
+
 
 
 type AccordionTitlePropsType = {
