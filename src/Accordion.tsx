@@ -1,51 +1,35 @@
 import { type } from 'os';
-import React from 'react';
+import React, { useState } from 'react';
 import { isReturnStatement, TypePredicateKind } from 'typescript';
 
 type AccordionPropsType = {
   titleValue: string
   collapsed: boolean
+  onChange:(collapsed:boolean)=> void
 }
+
 
 export function Accordion(props: AccordionPropsType) {
-  
-      
-      return <div>
-        <AccordionTitle title={props.titleValue} />
-        {!props.collapsed=== false && <AccordionBody />}
-      </div>
-  
-    }
-
-
-export function Accordion2(props: AccordionPropsType) {
-
-  if (props.collapsed===true) {
-    return <div>
-      <AccordionTitle title={props.titleValue} />
-    </div>
-  } else {
-    
-    return <div>
-      <AccordionTitle title={props.titleValue} />
-      <AccordionBody />
-    </div>
-
-  }
+ 
+  return <div>
+    <AccordionTitle title={props.titleValue} onChange={function (): void {
+      throw new Error('Function not implemented.');
+    } }    />
+        
+    {!props.collapsed && <AccordionBody/>}
+  </div>
 }
-
-
-
 
 
 type AccordionTitlePropsType = {
   title: string
+  onChange: ()=>void
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
-
   return (
-    <h3>{props.title}</h3>);
+    <h3 onClick={()=>{props.onChange}}>{props.title}</h3>
+    );
 }
 
 
