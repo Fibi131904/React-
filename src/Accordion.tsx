@@ -5,16 +5,15 @@ import { isReturnStatement, TypePredicateKind } from 'typescript';
 type AccordionPropsType = {
   titleValue: string
   collapsed: boolean
-  onChange:(collapsed:boolean)=> void
+  onChange:()=> void
 }
 
 
 export function Accordion(props: AccordionPropsType) {
  
   return <div>
-    <AccordionTitle title={props.titleValue} onChange={function (): void {
-      throw new Error('Function not implemented.');
-    } }    />
+    <AccordionTitle title={props.titleValue}
+    onChange={props.onChange}    />
         
     {!props.collapsed && <AccordionBody/>}
   </div>

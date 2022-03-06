@@ -5,6 +5,7 @@ import { Rating, RatingValueType } from './Rating';
 import { OnOff } from './OnOff';
 import UncontrolledAccordion from './UncontrolledAccordion';
 import { AncontrolledRating } from './UncontrolledRating';
+import UncontrolledOnOff from './UncontrolledOnOff';
 
 
 function App(props: any) {
@@ -14,29 +15,15 @@ function App(props: any) {
 
   return (
     <div>
-
-      <OnOff on={swithOn} onChange={(on) => setSwithOn(on)} />
-
-      <UncontrolledAccordion titleValue={'Menu'} />
-      <AncontrolledRating />
-
       <Rating value={ratingValue}
         onClick={setRatingValue} />
+      <AncontrolledRating />
       <Accordion titleValue={'Menu'}
-        collapsed={accordionCollapsed}
-        onChange={setAccordionCollapsed(!accordionCollapsed)} />
-      {/* <PageTitle title={'This is App component'} />
-      <PageTitle title={'Frends'} />
-      Article 1
-      <Rating value={3}/>
-      
-      Article 2 
-      <Rating value={0}/>
-      <Rating value={1}/>
-      
-      <Rating value={3}/>
-      <Rating value={4}/>
-      <Rating value={5}/> */}
+        collapsed={accordionCollapsed} onChange={() => { setAccordionCollapsed(!accordionCollapsed) }} />
+
+      {/* <OnOff on={swithOn} onChange={(on) => setSwithOn(on)} /> */}
+<UncontrolledOnOff onChange={setSwithOn}/>{swithOn.toString()}
+     
     </div>
   );
 }
