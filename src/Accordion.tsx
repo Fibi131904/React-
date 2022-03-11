@@ -1,4 +1,3 @@
-import { type } from 'os';
 import React, { useState } from 'react';
 import { isReturnStatement, TypePredicateKind } from 'typescript';
 
@@ -27,7 +26,7 @@ type AccordionTitlePropsType = {
 
 function AccordionTitle(props: AccordionTitlePropsType) {
   return (
-    <h3 onClick={()=>{props.onChange}}>{props.title}</h3>
+    <h3 onClick={(e)=> props.onChange()}>{props.title}</h3>
     );
 }
 
