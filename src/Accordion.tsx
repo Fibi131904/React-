@@ -1,43 +1,48 @@
 import React, { useState } from 'react';
 import { isReturnStatement, TypePredicateKind } from 'typescript';
 
+type ItemType={
+  title: string
+  value:any
+}
 type AccordionPropsType = {
   titleValue: string
   collapsed: boolean
-  onChange:()=> void
-  items:string[]
+  onChange: () => void
+  items: ItemType[]
+  onClick:(value:any)=>void
 }
 
 
 export function Accordion(props: AccordionPropsType) {
- 
+
   return <div>
     <AccordionTitle title={props.titleValue}
-    onChange={props.onChange}    />
-        
-    {!props.collapsed && <AccordionBody items={props.items}/>}
+      onChange={props.onChange}
+       />
+    {!props.collapsed && <AccordionBody items={props.items}onClick={props.onClick} />}
   </div>
 }
 
-
 type AccordionTitlePropsType = {
   title: string
-  onChange: ()=>void
+  onChange: () => void
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
   return (
-    <h3 onClick={(e)=> props.onChange()}>{props.title}</h3>
-    );
+    <h3 onClick={(e) => props.onChange()}>{props.title}</h3>
+  );
 }
 type AccordionBodyPropsType = {
-   items:string[]
+  items: ItemType[]
+  onClick:(value:any)=>void
 }
 
-function AccordionBody(props:AccordionBodyPropsType) {
+function AccordionBody(props: AccordionBodyPropsType) {
   return (
     <ul>
-      {props.items.map((i, index)=><li key={index}>{i}</li>)}
+      {props.items.map((i, index) => <li onClick={()=>{props.onClick(i.value)}} key={index}>{i.title}</li>)}
     </ul>
 
   );
