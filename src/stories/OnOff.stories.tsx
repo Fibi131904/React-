@@ -10,7 +10,7 @@ export default {
 export const OnMode = () => <OnOff on={true} onChange= {x=>x} />;
 export const OffMode = () => <OnOff on={false} onChange= {x=>x} />;
 
-export const ModeChanging =()=> {
+export const ModeChanging = ()=> {
     const [value,setvalue]=useState<boolean>(true);
     return <OnOff on= {value}onChange={setvalue}/>
 };
