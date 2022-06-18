@@ -1,6 +1,6 @@
 import React, { cloneElement, useEffect, useState } from 'react';
 import { action } from '@storybook/addon-actions'
-import {Clock } from './Clock';
+import {Clock } from './Clock/Clock';
 
 
 
