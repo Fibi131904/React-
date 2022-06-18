@@ -7,7 +7,7 @@ import UncontrolledAccordion from './UncontrolledAccordion';
 import { AncontrolledRating } from './UncontrolledRating';
 import UncontrolledOnOff from './UncontrolledOnOff';
 import { Select } from './Select/Select';
-import { Clock } from './Clock/Clock';
+import { Clock } from './stories/Clock/Clock';
 import { KeysTrackerExample, ResetEffectExample, SetIntervalExample, SetTimeoutExample } from './stories/UseEffect.stories';
 
 

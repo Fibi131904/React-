@@ -1,32 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState, useEffect} from 'react'
 
-type PropsType = {
 
+
+
+
+ const styles = {
+  fontSize: '30px'
+ }
+
+export default function Clock(props:any){
+  const [dateNow, setDate] = useState(getTime())
+
+  useEffect( () => {
+    const intervalId= setInterval(()=>{
+      setDate(getTime())
+    },1000)
+    return ()=>{
+clearInterval(intervalId)
 }
-const get2digitalsString = (num: number) => num < 10 ? '0' + num : num
+  }, [])
 
-export const Clock: React.FC<PropsType> = (props) => {
-    const [date, setDate] = useState(new Date())
-    useEffect(() => {
+  function getTime(){
+    let date = new Date(),
+    hours = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours(),
+    minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes(),
+    seconds = (date.getSeconds() < 10) ? '0' + date.getSeconds() : date.getSeconds();
+    return {hours, minutes, seconds}
+  }
 
-        const intervalID= setInterval(() => {
-            console.log('tick');
-            
-            setDate(new Date())
-        }, 1000)
-        return()=>{
-            clearInterval(intervalID)
-        }
-    }, [])
-   
-
-
-
-    return <div>
-        <span>{get2digitalsString(date.getSeconds())}</span>
-        :
-        <span>{get2digitalsString(date.getMinutes())}</span>
-        :
-        <span>{get2digitalsString(date.getHours())}</span>
+  return(
+    <div className="progress-bar">
+        <p style={styles}>{dateNow.hours + ':' + dateNow.minutes + ':' + dateNow.seconds}</p>
     </div>
+  )
 }
+
