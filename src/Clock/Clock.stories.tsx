@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { cloneElement, useEffect, useState } from 'react';
 import { action } from '@storybook/addon-actions'
 import {Clock } from './Clock';
 
